@@ -53,5 +53,28 @@ public class BookRepository {
         return bookList;
       });
   }
+  //Update
+  public Future<Boolean> updateBook(Integer id , CreateBookDTO book){
+
+    String sql = "UPDATE Books SET title = @p1, auther = @p2, isbn = @p3 WHERE id = @p4";
+
+    Tuple parameters = Tuple.of(book.getTitle() , book.getAuthor() , book.getIsbn() , id);
+
+    return pool.preparedQuery(sql)
+      .execute(parameters)
+      .map(res -> res.rowCount() > 0);
+  }
+  //Delete
+  public Future<Boolean> deleteBook(Integer id){
+
+    String sql = "DELETE FROM Books WHERE id = @p1";
+
+    Tuple parameters = Tuple.of(id);
+
+    return pool.preparedQuery(sql)
+      .execute(parameters)
+      .map(res -> res.rowCount() > 0);
+  }
+
 
 }
