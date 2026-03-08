@@ -44,7 +44,7 @@ public class BookRepository {
           book.setTitle(row.getString("title"));
           book.setAuthor(row.getString("author"));
           book.setIsbn(row.getString("isbn"));
-          book.setIsAvailable(row.getBoolean("is_Available"));
+          book.setIsAvailable(row.getBoolean("is_available"));
           book.setCreatedAt(row.getLocalDateTime("created_at"));
 
           bookList.add(book);
@@ -56,7 +56,7 @@ public class BookRepository {
   //Update
   public Future<Boolean> updateBook(Integer id , CreateBookDTO book){
 
-    String sql = "UPDATE Books SET title = @p1, auther = @p2, isbn = @p3 WHERE id = @p4";
+    String sql = "UPDATE Books SET title = @p1, author = @p2, isbn = @p3 WHERE id = @p4";
 
     Tuple parameters = Tuple.of(book.getTitle() , book.getAuthor() , book.getIsbn() , id);
 

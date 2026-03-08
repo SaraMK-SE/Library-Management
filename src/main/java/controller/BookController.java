@@ -31,10 +31,9 @@ public class BookController {
         });
 
     }catch (Exception e){
+      e.printStackTrace();
       context.response()
-        .setStatusCode(400)
-        .putHeader("content-type", "application/json")
-        .end("{\"error\": \"The data format is incorrect or incomplete\"}");
+        .setStatusCode(400);
     }
 
   }
@@ -52,6 +51,7 @@ public class BookController {
           .setStatusCode(500)
           .putHeader("content-type", "application/json")
           .end("{\"error\": \"server error occurred\"}");
+        error.printStackTrace();
       });
 
   }

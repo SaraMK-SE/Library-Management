@@ -1,0 +1,12 @@
+###
+POST http://localhost:8888/api/books
+Content-Type: application/json
+
+{
+  "title": "Architecture",
+  "author": "Robert",
+  "isbn": "123-456-789"
+}
+
+###
+GET http://localhost:8888/api/books
