@@ -14,10 +14,10 @@ public class ApiRouter {
     Router router = Router.router(vertx);
     router.route().handler(BodyHandler.create());
 
-    router.post("api/books").handler(ValidationConfig.buildBookValidation()).handler(bookController :: addBook);
-    router.get("api/books").handler(bookController :: getAllBooks);
-    router.put("api/books/:id").handler(bookController :: updateBook);
-    router.delete("api/books/:id").handler(bookController :: deleteBook);
+    router.post("/api/books").handler(ValidationConfig.buildBookValidation()).handler(bookController :: addBook);
+    router.get("/api/books").handler(bookController :: getAllBooks);
+    router.put("/api/books/:id").handler(bookController :: updateBook);
+    router.delete("/api/books/:id").handler(bookController :: deleteBook);
 
     router.errorHandler(400, ctx -> {
       if (ctx.failure() instanceof BadRequestException){
